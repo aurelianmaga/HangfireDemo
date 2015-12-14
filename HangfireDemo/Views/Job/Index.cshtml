@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Hangfire Demo</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="jumbotron">
+      <div class="container">
+        <h2><span class="label label-default">1. Make sure JobsRunner is running</span></h2>
+        <h2><span class="label label-default">2. Click one of the blue buttons bellow</span></h2>
+        <h2><span class="label label-default">3. Watch <a href="/dashboard" target="_blank" class="label label-success">Dashboard</a></span></h2>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            @using (Html.BeginForm("CreateJob", "Job", FormMethod.Post))
+            {
+              <input type="hidden" value="0" name="delayInSeconds" />
+              <input class="btn btn-primary btn-lg" type="submit" value="Create CurrentDateTimeJob" />
+            }
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            @using (Html.BeginForm("CreateJob", "Job", FormMethod.Post))
+            {
+              <input type="hidden" value="-1" name="delayInSeconds" />
+              <input class="btn btn-primary btn-lg" type="submit" value="Schedule CurrentDateTimeJob every minute" />
+            }
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            @using (Html.BeginForm("CreateJob", "Job", FormMethod.Post))
+            {
+              <input type="hidden" value="15" name="delayInSeconds" />
+              <input class="btn btn-primary btn-lg" type="submit" value="Schedule CurrentDateTimeJob in 15 seconds" />
+            }
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+  </body>
+</html>
